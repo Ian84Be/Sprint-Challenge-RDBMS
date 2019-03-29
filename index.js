@@ -5,8 +5,8 @@ const helmet = require('helmet');
 
 // const db = require('./data/dbConfig.js');
 
-const actionRouter = require('./action-router.js');
-const projectRouter = require('./project-router.js');
+const actionRouter = require('./data/action-router.js');
+const projectRouter = require('./data/project-router.js');
 
 const server = express();
 server.use(helmet());

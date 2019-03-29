@@ -5,6 +5,9 @@
   "repository": "https://github.com/Ian84Be/Sprint-Challenge-RDBMS.git",
   "author": "Ian Be <ian84be@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "server":"nodemon"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "helmet": "^3.16.0",

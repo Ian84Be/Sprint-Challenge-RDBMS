@@ -12,11 +12,10 @@ exports.up = function(knex, Promise) {
         tbl.increments();
         tbl.string('description').notNullable();
         tbl.string('notes').notNullable();
-        tbl.boolean('complete').defaultTo(false);
-        tbl.integer('project_id').unsigned()
+        tbl.integer('project_id').notNullable().unsigned()
             .references('id').inTable('projects')
             .onUpdate('CASCADE').onDelete('RESTRICT');
-
+        tbl.boolean('complete').defaultTo(false);
     });
 };
 
