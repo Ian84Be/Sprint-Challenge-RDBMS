@@ -1,6 +1,5 @@
 
 const db = require('../dbConfig.js');
-const mappers = require('./mappers.js');
 
 const router = require('express').Router();
 
@@ -18,10 +17,20 @@ router.post('/', async (req,res) => {
     }
 });
 
+router.get('/', async (req,res) => {
+    try {
+        const result = await db('projects');
+        res.status(200).json(result);
+    }
+    catch(err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const project = await db('projects').where({id});
+        const project = await db('projects').where({id}).first();
         const actions = await db('actions').where({'project_id':id});
         const result = {
             ...project,
@@ -33,3 +42,5 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+module.exports = router;

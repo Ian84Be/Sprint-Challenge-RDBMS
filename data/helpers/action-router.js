@@ -16,3 +16,15 @@ router.post('/', async (req,res) => {
         }
     }
 });
+
+router.get('/', async (req,res) => {
+    try {
+        const result = await db('actions');
+        res.status(200).json(result);
+    }
+    catch(err) {
+        res.status(500).json(err);
+    }
+});
+
+module.exports = router;
